@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { WebView, View, StyleSheet, Platform } from 'react-native';
 import renderChart from './renderChart';
-import echarts from './echarts.min';
+// import echarts from './echarts.min';
 
 export default class App extends Component {
 
@@ -9,7 +9,7 @@ export default class App extends Component {
     super(props);
     this.setNewOption = this.setNewOption.bind(this);
   }
-  
+
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.option !== this.props.option) {
@@ -34,10 +34,41 @@ export default class App extends Component {
           }}
           scalesPageToFit={Platform.OS !== 'ios'}
           originWhitelist={['*']}
-          source={require('./tpl.html')}
+          // source={require('./tpl.html')}
+          source={Platform.OS === 'ios' ? require('./tpl.html') : {html: _html}}
           onMessage={event => this.props.onPress ? this.props.onPress(JSON.parse(event.nativeEvent.data)) : null}
         />
       </View>
     );
   }
 }
+
+const _html = `<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    <title>echarts</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style type="text/css">
+      html,body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        // overflow: hidden;
+
+      }
+      #main {
+        height: 100%;
+        background-color: transparent;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@3.8.5/dist/echarts.min.js"></script>
+  </head>
+  
+  <body>
+    <div id="main" ></div>
+  <body>
+<html>
+`;
