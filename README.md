@@ -8,6 +8,8 @@
 
 $ npm install native-echarts --save
 
+## android 打包或者code-push使用CDN外挂
+
 ## Usage
 
 The Usage is complete consistent with Echarts
