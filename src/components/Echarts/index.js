@@ -64,7 +64,7 @@ const _html = `<!DOCTYPE html>
         background-color: transparent;
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@3.8.5/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@3.2.3/dist/echarts.min.js"></script>
   </head>
   
   <body>
